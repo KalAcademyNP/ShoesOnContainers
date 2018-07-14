@@ -1,0 +1,3 @@
+G:\OneDrive - Kal Academy\Documents\Materials\Software Bootcamp\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCatalogAPI.csproj.CoreCompileInputs.cache
+G:\OneDrive - Kal Academy\Documents\Materials\Software Bootcamp\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCatalogAPI.AssemblyInfoInputs.cache
+G:\OneDrive - Kal Academy\Documents\Materials\Software Bootcamp\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCatalogAPI.AssemblyInfo.cs
