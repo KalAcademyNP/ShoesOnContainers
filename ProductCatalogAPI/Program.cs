@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ProductCatalogAPI.Data;
 
 namespace ProductCatalogAPI
 {
@@ -14,7 +16,17 @@ namespace ProductCatalogAPI
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = 
+                    services.GetRequiredService<CatalogContext>();
+                CatalogSeed.SeedAsync(context).Wait();
+            }
+            host.Run();
+
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
