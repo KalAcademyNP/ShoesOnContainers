@@ -8,7 +8,6 @@ G:\Github\ShoesOnContainers\WebMvc\bin\Debug\netcoreapp2.1\WebMvc.dll
 G:\Github\ShoesOnContainers\WebMvc\bin\Debug\netcoreapp2.1\WebMvc.pdb
 G:\Github\ShoesOnContainers\WebMvc\bin\Debug\netcoreapp2.1\WebMvc.Views.dll
 G:\Github\ShoesOnContainers\WebMvc\bin\Debug\netcoreapp2.1\WebMvc.Views.pdb
-G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.csprojAssemblyReference.cache
 G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.RazorAssemblyInfo.cache
 G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.RazorAssemblyInfo.cs
 G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.TagHelpers.input.cache
@@ -30,3 +29,6 @@ G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.Views.pdb
 G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.dll
 G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.pdb
 G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\WebMvc.csproj.CopyComplete
+G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Catalog\Index.g.cshtml.cs
+G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Catalog\_pagination.g.cshtml.cs
+G:\Github\ShoesOnContainers\WebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Catalog\_product.g.cshtml.cs

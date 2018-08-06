@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebMvc.Infrastructure;
+using WebMvc.Services;
 
 namespace WebMvc
 {
@@ -29,8 +31,9 @@ namespace WebMvc
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
+            services.Configure<AppSettings>(Configuration);
+            services.AddSingleton<IHttpClient, CustomHttpClient>();
+            services.AddTransient<ICatalogService, CatalogService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -53,7 +56,7 @@ namespace WebMvc
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Catalog}/{action=Index}/{id?}");
             });
         }
     }

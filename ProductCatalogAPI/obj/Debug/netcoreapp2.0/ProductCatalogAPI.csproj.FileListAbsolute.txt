@@ -11,4 +11,3 @@ G:\Github\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCat
 G:\Github\ShoesOnContainers\ProductCatalogAPI\bin\Debug\netcoreapp2.0\ProductCatalogAPI.pdb
 G:\Github\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCatalogAPI.dll
 G:\Github\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCatalogAPI.pdb
-G:\Github\ShoesOnContainers\ProductCatalogAPI\obj\Debug\netcoreapp2.0\ProductCatalogAPI.csprojAssemblyReference.cache
