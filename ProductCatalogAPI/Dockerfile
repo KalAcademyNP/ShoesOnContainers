@@ -1,18 +1,16 @@
-FROM microsoft/aspnetcore-build:2.0 AS build-env
-WORKDIR /app
+FROM microsoft/aspnetcore-build:2.0.0 AS build
+WORKDIR /code
 
-# copy csproj and restore as distinct layers
-COPY *.csproj ./
+COPY . .
 RUN dotnet restore
 
-# copy everything else and build
-COPY . ./
-
-RUN dotnet publish -c Release -o out
+RUN dotnet publish --output /out/ --configuration Release
 
 # build runtime image
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/aspnetcore:2.0.0
+
+COPY --from=build /out /app/
+
 WORKDIR /app
-COPY --from=build-env /app/out .
-EXPOSE 80/tcp
+
 ENTRYPOINT ["dotnet", "ProductCatalogAPI.dll"]
