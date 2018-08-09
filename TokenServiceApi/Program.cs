@@ -19,9 +19,10 @@ namespace TokenServiceApi
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
+            var scope = host.Services.CreateScope();
 
-            using (var scope = host.Services.CreateScope())
-            {
+            //using (var scope = host.Services.CreateScope())
+            //{
                 var services = scope.ServiceProvider;
 
                 try
@@ -39,7 +40,7 @@ namespace TokenServiceApi
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred while seeding the AuthorizationServer database.");
                 }
-            }
+            //}
 
             host.Run();
         }

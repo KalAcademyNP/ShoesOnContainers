@@ -5,14 +5,12 @@ EXPOSE 44333
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY TokenServiceApi/TokenServiceApi.csproj TokenServiceApi/
-RUN dotnet restore TokenServiceApi/TokenServiceApi.csproj
 COPY . .
-WORKDIR /src/TokenServiceApi
-RUN dotnet build TokenServiceApi.csproj -c Release -o /app
+RUN dotnet restore
+
 
 FROM build AS publish
-RUN dotnet publish TokenServiceApi.csproj -c Release -o /app
+RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app

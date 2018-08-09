@@ -1,27 +1,26 @@
-version: "3.2"
+version: "3.4"
 
 networks:
    frontend:
    backend:
 
 services:
-
-  webmvc:
-    build: 
-      context: .\WebMvc
-      dockerfile: Dockerfile
-    environment: 
-      - ASPNETCORE_ENVIRONMENT=Development 
-      - CatalogUrl=http://catalog
-      - IdentityUrl=http://localhost:5020
-    container_name: webshop
-    ports:
-      - "5200:80"
-    networks:
-      - frontend 
-    depends_on:
-      - catalog
-      - tokenserver
+   webmvc:
+      build: 
+         context: .\WebMvc
+         dockerfile: Dockerfile
+      environment: 
+         ASPNETCORE_ENVIRONMENT: Development 
+         CatalogUrl: http://catalog
+         IdentityUrl: http://localhost:5020
+      container_name: webshop
+      ports:
+         - "5200:80"
+      networks:
+         - frontend 
+      depends_on:
+         - catalog
+         - tokenserver
 
    catalog:
       build:
@@ -29,10 +28,10 @@ services:
          dockerfile: Dockerfile
       image: shoes/catalogapi
       environment:
-         - DatabaseServer=mssqlserver
-         - DatabaseName=CatalogDb
-         - DatabaseUser=sa
-         - DatabaseUserPassword=ProductApi(!)
+         DatabaseServer: mssqlserver
+         DatabaseName: CatalogDb
+         DatabaseUser: sa
+         DatabaseUserPassword: ProductApi(!)
       container_name: catalogapi
       ports:
          - "5030:80"
@@ -42,21 +41,21 @@ services:
       depends_on:
          - mssqlserver
 
-  tokenserver:
-    build: 
-      context: .\TokenServiceApi
-      dockerfile: Dockerfile
-    environment: 
-      - ASPNETCORE_ENVIRONMENT=Development 
-      - MvcClient=http://localhost:5200   
-    container_name: tokenserviceapi
-    ports:
-      - "5020:80"
-    networks:
-      - backend
-      - frontend 
-    depends_on:
-      - mssqlserver
+   tokenserver:
+      build: 
+         context: .\TokenServiceApi
+         dockerfile: Dockerfile
+      environment: 
+         ASPNETCORE_ENVIRONMENT: Development 
+         MvcClient: http://localhost:5200   
+      container_name: tokenserviceapi
+      ports:
+         - "5020:80"
+      networks:
+         - backend
+         - frontend 
+      depends_on:
+         - mssqlserver
 
 
    mssqlserver:
@@ -66,7 +65,7 @@ services:
 
       container_name: mssqlcontainer
       environment:
-         - ACCEPT_EULA=Y
-         - SA_PASSWORD=ProductApi(!)
+         ACCEPT_EULA: Y
+         SA_PASSWORD: ProductApi(!)
       networks:
          - backend
