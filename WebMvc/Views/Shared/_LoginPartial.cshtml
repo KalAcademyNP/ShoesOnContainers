@@ -1,7 +1,8 @@
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
+@using WebMvc.Services
+@using WebMvc.Models
 
-
-
+@inject IIdentityService<ApplicationUser> UserManager
 @if (User.FindFirst(x => x.Type == "preferred_username") != null)
 {
 
@@ -32,7 +33,9 @@
         </div>
     </section>
 
-    <section class="col-lg-1 col-xs-12"></section>
+    <section class="col-lg-1 col-xs-12">
+        @await Component.InvokeAsync("Cart", new { user = UserManager.Get(User) })
+    </section>
 
 }
 else

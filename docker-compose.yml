@@ -12,7 +12,8 @@ services:
       environment: 
          ASPNETCORE_ENVIRONMENT: Development 
          CatalogUrl: http://catalog
-         IdentityUrl: http://localhost:5020
+         IdentityUrl: http://10.10.10.157:5020
+         CartUrl: http://cart
       container_name: webshop
       ports:
          - "5200:80"
@@ -21,6 +22,7 @@ services:
       depends_on:
          - catalog
          - tokenserver
+         - cart
 
    catalog:
       build:
@@ -47,7 +49,8 @@ services:
          dockerfile: Dockerfile
       environment: 
          ASPNETCORE_ENVIRONMENT: Development 
-         MvcClient: http://localhost:5200   
+         MvcClient: http://localhost:5200  
+         BasketApiClient: http://localhost:5050
       container_name: tokenserviceapi
       ports:
          - "5020:80"
@@ -57,6 +60,23 @@ services:
       depends_on:
          - mssqlserver
 
+   cart:
+      image: cartimage
+      build: 
+         context: .\CartApi
+         dockerfile: Dockerfile
+      environment: 
+         ASPNETCORE_ENVIRONMENT: Development 
+         IdentityUrl: http://tokenserver
+      container_name: cartapi
+      ports:
+         - "5050:80"
+      networks:
+         - backend
+         - frontend 
+      depends_on:
+         - basket.data
+         - tokenserver
 
    mssqlserver:
       image: "microsoft/mssql-server-linux:latest"
@@ -69,3 +89,11 @@ services:
          SA_PASSWORD: ProductApi(!)
       networks:
          - backend
+
+
+   basket.data:
+      image: redis
+      ports:
+         - "6377:6379"  
+      networks:
+         - backend 

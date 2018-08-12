@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenServiceApi", "TokenSer
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9FC55A8D-DE8B-4967-9490-939FC0C42121}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartApi", "CartApi\CartApi.csproj", "{BDFD9851-59D6-4883-AC8B-C849A0951FCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9FC55A8D-DE8B-4967-9490-939FC0C42121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FC55A8D-DE8B-4967-9490-939FC0C42121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FC55A8D-DE8B-4967-9490-939FC0C42121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDFD9851-59D6-4883-AC8B-C849A0951FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDFD9851-59D6-4883-AC8B-C849A0951FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDFD9851-59D6-4883-AC8B-C849A0951FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDFD9851-59D6-4883-AC8B-C849A0951FCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{9ED46662-670E-46DE-9CA2-626FE7E1379B} = {4DA84168-6719-4B3F-96CD-7BFAABFF5D88}
 		{944E1DCB-5D81-4343-ADC2-2C81C329BD7F} = {9ED46662-670E-46DE-9CA2-626FE7E1379B}
 		{C55BCBCE-A344-4433-A92F-301449F872C1} = {ADB2775C-D8A0-4A1A-9499-CEB5FE95FCF7}
+		{BDFD9851-59D6-4883-AC8B-C849A0951FCE} = {ADB2775C-D8A0-4A1A-9499-CEB5FE95FCF7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FDB89A82-6909-49B5-982A-FCE5368E79FD}
