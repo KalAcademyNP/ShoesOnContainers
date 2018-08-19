@@ -13,6 +13,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json.Linq;
 using WebMvc;
 using WebMvc.Infrastructure;
+using WebMvc.Models.OrderModels;
 
 namespace WebMvc.Services
 {
@@ -73,21 +74,13 @@ namespace WebMvc.Services
         public async Task<Cart> GetCart(ApplicationUser user)
         {
             var token = await GetUserTokenAsync();
-          //  string parse = JArray.Parse(token).ToString();
             _logger.LogInformation(" We are in get basket and user id " + user.Id);
             _logger.LogInformation(_remoteServiceBaseUrl);
 
             var getBasketUri = ApiPaths.Basket.GetBasket(_remoteServiceBaseUrl, user.Id);
             _logger.LogInformation(getBasketUri);
-          //  getBasketUri = ApiPaths.Basket.GetBasket(_remoteServiceBaseUrl, user.Id);
             var dataString = await _apiClient.GetStringAsync(getBasketUri, token);
             _logger.LogInformation(dataString);
-            // Use the ?? Null conditional operator to simplify the initialization of response
-            //var response = JsonConvert.DeserializeObject<Basket>(dataString) ??
-            //    new Basket()
-            //    {
-            //        BuyerId = user.Id
-            //    };
 
             var response = JsonConvert.DeserializeObject<Cart>(dataString.ToString()) ??
                new Cart()
@@ -97,7 +90,28 @@ namespace WebMvc.Services
             return response;
         }
 
-        
+        public Order MapCartToOrder(Cart cart)
+        {
+            var order = new Order();
+            order.OrderTotal = 0;
+
+            cart.Items.ForEach(x =>
+            {
+                order.OrderItems.Add(new OrderItem()
+                {
+                    ProductId = int.Parse(x.ProductId),
+
+                    PictureUrl = x.PictureUrl,
+                    ProductName = x.ProductName,
+                    Units = x.Quantity,
+                    UnitPrice = x.UnitPrice
+                });
+                order.OrderTotal += (x.Quantity * x.UnitPrice);
+            });
+
+            return order;
+        }
+
 
         public async Task<Cart> SetQuantities(ApplicationUser user, Dictionary<string, int> quantities)
         {

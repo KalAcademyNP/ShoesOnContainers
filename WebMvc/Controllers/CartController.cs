@@ -55,6 +55,11 @@ namespace WebMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(Dictionary<string, int> quantities, string action)
         {
+            if (action == "[ Checkout ]")
+            {
+                return RedirectToAction("Create", "Order");
+            }
+
 
             try
             {
@@ -62,11 +67,6 @@ namespace WebMvc.Controllers
                 var basket = await _cartService.SetQuantities(user, quantities);
                 var vm = await _cartService.UpdateCart(basket);
 
-                //if (action == "[ Checkout ]")
-                //{
-                //    var order = _cartService.MapBasketToOrder(basket);
-                //    return RedirectToAction("Create", "Order");
-                //}
             }
             catch (BrokenCircuitException)
             {
